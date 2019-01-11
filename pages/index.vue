@@ -46,6 +46,8 @@ export default {
       this.casas = res.data;
       console.log(this.casas);
     }
+
+   
   }
 }
 </script>
@@ -116,6 +118,7 @@ export default {
 	display: block;
 	margin-bottom: 25px;
 }
+
 
 .descricao {
 	padding-left: 20px;

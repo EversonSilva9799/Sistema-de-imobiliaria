@@ -3,7 +3,7 @@
         <section class="imovel">
             <h1>Imóvel</h1>
             <div>
-                <img :src="casa.imagem" :alt="casa.titulo">
+                <img  :src="casa.imagem" :alt="casa.titulo">
                 <div class="wrap">
                     <h2 class="titulo">{{ casa.titulo }}</h2>
                     <h3>Descrição breve sobre o imóvel</h3>
@@ -17,7 +17,8 @@
                         <li>Valor: R$ {{ casa.valor }}</li>
                     </ul>
 
-                    <a @click="activeForm">Entrar em contato</a>
+                    <a class="btn" @click="activeForm">Entrar em contato</a>
+					<nuxt-link class="btn" to="/">Voltar</nuxt-link>
                 </div>
 
 
@@ -29,14 +30,14 @@
 
 		<div class="contato_casa" v-show="form_contato">
 			<span class="close" @click="closeForm">X</span>
-			<h2>Entre em contato sobre a casa</h2>
+			<h2>Fale conosco</h2>
 			<form action="" @submit.prevent="login">
 				<label for="codigo">Código da casa</label>
-				<input type="text" name="codigo" placeholder="Código da casa" :value="casa.código">
+				<input disabled type="text" name="codigo" placeholder="Código da casa" :value="casa.código">
 				<label for="titulo">Título da casa</label>
-				<input type="text" name="titulo" placeholder="Título da casa" :value="casa.titulo">
+				<input  disabled type="text" name="titulo" placeholder="Título da casa" :value="casa.titulo">
 				<label for="valor">Valor da casa</label>
-				<input type="text" name="valor" placeholder="Valor da casa" :value="'R$ ' +casa.valor">
+				<input  disabled type="text" name="valor" placeholder="Valor da casa" :value="'R$ ' +casa.valor">
 				<textarea placeholder="Mensagem"></textarea>
 				<button type="submit">Enviar</button>
 
@@ -57,18 +58,28 @@ export default {
 	created() {
 		this.id = this.$route.params.id
 		this.show()
+		
 	},
 	methods: {
 		async show() {
 			const res = await this.$axios.get('http://localhost:8080/casas/' + this.id);
 			this.casa = res.data;
 		},
+
 		activeForm() {
+			// window.scrollTop = 0;
 			this.form_contato = true;
+			var el = document.querySelector('.contato_casa');
+			
+			//el.classList = 'show'
+			window.scrollTo(0, 0);
+			
 		},
 		closeForm() {
 			this.form_contato = false;
-		}
+		},
+
+		
 	}
 
     
@@ -110,9 +121,11 @@ export default {
 
 .imovel img {
 	width: 600px;
+	max-width: 100%;
 	margin-right: 40px;
 	float: left;
 }
+
 
 .imovel .wrap{
 	float: left;
@@ -150,11 +163,13 @@ export default {
 	margin-bottom: 10px;
 }
 
-.imovel .wrap a {
+.imovel .wrap .btn {
 	display: block;
 	cursor: pointer;
+	color: #000;
 	border: 3px solid #4286f4;
 	width: 170px;
+	margin-bottom: 10px;
 	text-align: center;
 	padding: 10px 20px;
 	font-weight: bold;
@@ -163,33 +178,57 @@ export default {
 .contato_casa {
 	position: absolute;
 	width: 40%;
-	/* height: 400px; */
+	padding-top: 15px;
 	top: 0;
 	left: 200px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #f7f8f9;
+	background-color: #4286f4;
+	border: 1px solid rgba(255,255,255,0.4);
+	text-align: center;
+	color: #fff;
+}
+
+.close {
+	cursor: pointer;
+	font-size: 1.5em;
+	float: left;
+}
+
+.show {
+	transform: translate3d(-100px, 0px, 0px);
+}
+
+.close:hover {
+	background-color: rgba(244, 92, 66, 1);
 }
 
 .contato_casa h2 {
 	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 
 .contato_casa form{
 	widows: 100%;
 }
 
+.contato_casa form label {
+	display: block;
+	margin-top: 15px;
+}
+
 .contato_casa form input{
 	width: 60%;
 	height: 35px;
 	display: block;
-	margin: 10px auto 0 auto;
+	margin: 0 auto 0 auto;
 	border-radius: 3px;
 	border: none;
 	border-bottom: 1px solid rgba(0,0,0,0.4);
 	outline: none;
-	padding-left: 20px;
+	padding-left: 5px;
 }
 
 .contato_casa textarea {
