@@ -1,3 +1,5 @@
+/*RESET e Estilos gerais*/
+
 * {
 	margin: 0;
 	padding: 0;
@@ -8,157 +10,106 @@
 a{ text-decoration: none; }
 ul{list-style: none;}
 body{background-color: #f7f7f7;}
+img{max-width: 100%;}
 
 .clear {
 	clear: both;
 }
 
-/*header*/
 
 
 
 
-
-
-/*Página sobre*/
-
-.sobre {
+/*GRID do Sistema*/
+.container {
 	max-width: 960px;
-	margin: 0 auto;
-	padding-top: 60px;
-	text-align: center;
+	margin:  0 auto;
+	
 }
 
-.sobre h1 {
-	font-size: 2.25em;
-	margin-bottom: 30px;
-}
-
-.sobre h1::after {
-	content: '';
-	display: block;
-	width: 100%;
-	height: 1px;
-	margin: 20px 0 50px 0;
-	background-color: rgba(0, 0, 0, 0.2);
-}
-
-.sobre > div {
-	width: 100%;
-}
-
-.sobre img {
-	float: left;
-	width: 300px;
-	max-width: 100%;
-	margin-right: 20px;
-	margin-left: 10px;
-}
-
-.sobre .wrap{
-	float: left;
-	text-align: justify;
-}
-
-.sobre .wrap h2 {
-	font-weight: normal;
-	font-size: 2em;
-	margin-bottom: 30px;
-}
-
-.sobre .wrap h3 {
-	font-weight: normal;
-	font-size: 0.9em;
-	position: relative;
-	left: 20px;
-	margin-bottom: 20px;
-
-}
-
-.sobre .wrap h3::before {
-	content: '';
-	width: 5px;
-	height: 25px;
-	display: inline-block;
-	position: relative;
-	top: 7px;
-	left: -23px;
-	background-color: #4286f4;
-	/* margin-right: 30px. */
-}
-
-/*Página contato*/
-
-.contato {
-	max-width: 960px;
-	margin: 0 auto;
-	padding-top: 60px;
-	text-align: center;
-}
-
-.contato h1 {
-	font-size: 2.25em;
-	margin-bottom: 30px;
-}
-
-.contato h1::after {
-	content: '';
-	display: block;
-	width: 100%;
-	height: 1px;
-	margin: 20px 0 50px 0;
-	background-color: rgba(0, 0, 0, 0.2);
-}
-
-.contato > div::before, .contato > div::after {
+.container::before, .container::after {
 	content: '';
 	display: table;
 	clear: both;
 }
 
-.contato img {
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+	margin-left: 10px;
+	margin-right: 10px;
 	float: left;
-	width: 350px;
-	max-width: 100%;
-	margin: 0 40px 10px 40px;
-}
-
-.contato form {
-	float: left;
-	width: 350px;
-	margin: 0 10px;
-	text-align: justify;
-
-}
-
-.contato form label {
-	display: none;
-	margin-bottom: 10px;
-}
-
-.contato form input {
-	width: 300px;
-	height: 40px;
-	outline: none;
 	display: block;
-	border: none;
-	margin-bottom: 40px;
-	border-bottom: 1px solid #4286f4;
+	min-height: 1px;
 }
 
-.contato form button {
-	margin-top: 40px;
-	width: 90px;
-	height: 35px;
-	background-color: #4286f4;
-	padding: 10px 20px;
-	color: #fff;
-	border: none;
-	cursor: pointer;
+.grid-1 {
+	width: calc(8.333% - 20px);
+}
 
+.grid-2 {
+	width: calc(16.666% - 20px);
+}
+
+.grid-3 {
+	width: calc(25% - 20px);
+}
+
+.grid-4 {
+	width: calc(33.333% - 20px);
+}
+
+.grid-5 {
+	width: calc(41.666% - 20px);
+}
+
+.grid-6 {
+	width: calc(50% - 20px);
+}
+
+.grid-7 {
+	width: calc(58.333% - 20px);
+}
+
+.grid-8 {
+	width: calc(66.666% - 20px);
+}
+
+.grid-9 {
+	width: calc(75% - 20px);
+}
+
+.grid-10 {
+	width:  calc(83.333% - 20px);
+}
+
+.grid-11 {
+	width: calc(91.666% - 20px);
+}
+
+.grid-12 {
+	width: calc(100% - 20px);
 }
 
 
+@media only screen and (max-width: 739px) {
+	
+	.container {
+		max-width: 300px;
+	}
 
-/*footer*/
+	.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+		float: none;
+	}
+}
+
+@media only screen and (min-width: 740px) and (max-width: 980px) {
+
+	.sobre_container {
+		max-width: 720px;
+	}
+
+}
+
 

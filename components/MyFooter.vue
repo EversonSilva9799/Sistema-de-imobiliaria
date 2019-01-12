@@ -1,12 +1,12 @@
 <template>
     <div>
         <footer class="footer">
-            <div class="footer_container">
-                <div class="content_footer">
+            <div class="container">
+                <div class="content_footer grid-8">
                     <h2>Footer Content</h2>
                     <p>You can use roes and columns here to organize your footer content</p>
                 </div>
-                <div class="footer_links">
+                <div class="footer_links grid-4">
                     <h2>Links</h2>
                     <ul>
                         <li>Home</li>
@@ -17,9 +17,9 @@
             </div>
 
             <div class="copy">
-                <div class="copy_container">
-                    <p>copy 2018 Copyright text</p>
-                    <a href="#">More links</a>
+                <div class="container">
+                    <p class="grid-8">copy 2018 Copyright text</p>
+                    <a class="grid-4" href="#">More links</a>
                 </div>
             </div>
             
@@ -37,31 +37,16 @@
 	padding-top: 30px;
 }
 
-.footer_container {
-	max-width: 960px;
-	margin: 0 auto;
-}
 
-.footer_container::before, .footer_container::after {
-	content: '';
-	display: table;
-	clear: both;
-}
 
-.content_footer {
-	float: left;
-	margin: 0 10px;
-	max-width: 460px;
-}
+
 
 .content_footer h2 {
 	font-size: 1.5em;
 	margin-bottom: 20px;
 }
 
-.content_footer p {
-	max-width: 320px;
-}
+
 
 .footer_links {
 	float: left;
@@ -80,16 +65,6 @@
 	background-color:#419af4;
 }
 
-.copy_container {
-	max-width: 960px;
-	margin: 0 auto;
-}
-
-.copy_container::before, .copy_container::after {
-	content: '';
-	display: table;
-	clear: both;
-}
 
 .copy p {
 	font-weight: normal;

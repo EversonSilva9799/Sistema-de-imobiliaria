@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="">
 
 
 	<section class="intro">
@@ -9,8 +9,8 @@
 
 	<section class="produtos">
 		<h1>Imóveis</h1>
-		<ul class="produtos_item">
-			<li v-for="casa of casas" :key="casa.id" class="item">
+		<ul class="container">
+			<li v-for="casa of casas" :key="casa.id" class="item grid-3">
 				<img :src="casa.imagem" alt="">
 				<div class="descricao">
 					<p class="status">{{ casa.status }}</p>
@@ -20,8 +20,7 @@
 				<a :href="'/imovel/' + casa.id">Ver Mais...</a>
 			</li>	
 
-		</ul>
-		
+		</ul>	
 	</section>
 
   </section>
@@ -104,8 +103,6 @@ export default {
 
 .item {
   list-style: none;
-	float: left;
-	width: 220px;
 	box-shadow: 0 0 1px 0px #000;
 	margin: 0 10px 20px 10px;
 	padding-bottom: 20px;
@@ -145,4 +142,11 @@ export default {
 	color:  rgba(255, 177, 76, 0.7);
 }
 
+@media only screen and (min-width: 740px) and (max-width: 980px) {
+
+	.grid-3 {
+		width: calc(33.33% - 20px);
+	}
+
+}
 </style>

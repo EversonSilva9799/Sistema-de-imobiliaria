@@ -2,9 +2,12 @@
     <div>
         <section class="imovel">
             <h1>Imóvel</h1>
-            <div>
-                <img  :src="casa.imagem" :alt="casa.titulo">
-                <div class="wrap">
+            <div class="container">
+				<div class="grid-7">
+					<img  :src="casa.imagem" :alt="casa.titulo">
+				</div>
+                
+                <div class="wrap grid-5">
                     <h2 class="titulo">{{ casa.titulo }}</h2>
                     <h3>Descrição breve sobre o imóvel</h3>
                     <ul>
@@ -17,21 +20,34 @@
                         <li>Valor: R$ {{ casa.valor }}</li>
                     </ul>
 
-                    <a class="btn" @click="activeForm">Entrar em contato</a>
-					<nuxt-link class="btn" to="/">Voltar</nuxt-link>
                 </div>
+            </div> 
 
-
-            </div>
-            
-            <div class="clear"></div>
-
+			<div class="container">
+			<a class="btn" @click="activeForm">Entrar em contato</a>
+			<nuxt-link class="btn" to="/">Voltar</nuxt-link>
+			</div>
+			
+            <div class="container contato_casa " v-show="form_contato">
+				<span class="close" @click="closeForm">X</span>
+				<h2>Fale conosco</h2>
+				<form action="" @submit.prevent="login" class="grid-12">
+					<label for="codigo">Código da casa</label>
+					<input disabled type="text" name="codigo" placeholder="Código da casa" :value="casa.código">
+					<label for="titulo">Título da casa</label>
+					<input  disabled type="text" name="titulo" placeholder="Título da casa" :value="casa.titulo">
+					<label for="valor">Valor da casa</label>
+					<input  disabled type="text" name="valor" placeholder="Valor da casa" :value="'R$ ' +casa.valor">
+					<textarea placeholder="Mensagem"></textarea>
+					<button type="submit">Enviar</button>
+				</form>
+			</div>
         </section>
 
-		<div class="contato_casa" v-show="form_contato">
+		<!-- <div class="contato_casa container" v-show="form_contato">
 			<span class="close" @click="closeForm">X</span>
 			<h2>Fale conosco</h2>
-			<form action="" @submit.prevent="login">
+			<form action="" @submit.prevent="login" class="grid-12">
 				<label for="codigo">Código da casa</label>
 				<input disabled type="text" name="codigo" placeholder="Código da casa" :value="casa.código">
 				<label for="titulo">Título da casa</label>
@@ -42,7 +58,7 @@
 				<button type="submit">Enviar</button>
 
 			</form>
-		</div>
+		</div> -->
     </div>
 </template>
 
@@ -91,8 +107,8 @@ export default {
 
 <style scoped>
     .imovel {
-	max-width: 960px;
-	margin: 0 auto;
+	/* max-width: 960px;
+	margin: 0 auto; */
 	padding-top: 60px;
 	text-align: center;
 }
@@ -113,22 +129,17 @@ export default {
 .imovel h1::after {
 	content: '';
 	display: block;
-	width: 100%;
+	max-width: 940px;
 	height: 1px;
-	margin: 20px 0 50px 0;
+	margin: 20px auto 50px auto;
+	text-align: center;
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
-.imovel img {
-	width: 600px;
-	max-width: 100%;
-	margin-right: 40px;
-	float: left;
-}
+
 
 
 .imovel .wrap{
-	float: left;
 	text-align: justify;
 }
 
@@ -163,24 +174,32 @@ export default {
 	margin-bottom: 10px;
 }
 
-.imovel .wrap .btn {
-	display: block;
+.btn {
+	display: inline-block;
 	cursor: pointer;
 	color: #000;
 	border: 3px solid #4286f4;
-	width: 170px;
-	margin-bottom: 10px;
+	width: 120px;
+	height: 52px;
+	margin-left: 10px;
 	text-align: center;
-	padding: 10px 20px;
-	font-weight: bold;
+	padding: 5px 10px;
+	font-weight: normal;
+	float: left;
+	display: flex;
+   	justify-content: center;
+   	align-items: center;
 }
 
-.contato_casa {
+.btn:hover {
+	border: 3px solid #000;
+}
+
+.ccontato_casa {
 	position: absolute;
-	width: 40%;
+	/* width: 40%; */
 	padding-top: 15px;
-	top: 0;
-	left: 200px;
+
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -190,15 +209,24 @@ export default {
 	color: #fff;
 }
 
+.contato_casa {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0;
+	background-color: #4286f4;
+	border: 1px solid rgba(255,255,255,0.4);
+	text-align: center;
+	color: #fff; 
+
+}
+
 .close {
 	cursor: pointer;
 	font-size: 1.5em;
 	float: left;
 }
 
-.show {
-	transform: translate3d(-100px, 0px, 0px);
-}
 
 .close:hover {
 	background-color: rgba(244, 92, 66, 1);
@@ -211,7 +239,7 @@ export default {
 }
 
 .contato_casa form{
-	widows: 100%;
+	width: 100%;
 }
 
 .contato_casa form label {
@@ -232,8 +260,9 @@ export default {
 }
 
 .contato_casa textarea {
-	margin: 30px;
-	width: 480px;
+	margin-top: 30px;
+	/* width: 480px; */
+	width: 89%;
 	height: 180px;
 
 }
@@ -249,6 +278,15 @@ export default {
 	border: none;
 	cursor: pointer;
 }
+
+@media only screen and (max-width: 739px) {
+	.btn {
+		margin: 0;
+		margin-right: 10px;
+	}
+}
+
+
 
 
 </style>

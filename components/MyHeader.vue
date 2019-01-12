@@ -1,9 +1,9 @@
 <template>
     <div>
         <header class="menu">
-            <div class="menu_container">
-                <nuxt-link class="logo" to="/">Imob</nuxt-link>
-                <nav class="nav_bar">
+            <div class="container">
+                <nuxt-link class="grid-4" to="/">Imob</nuxt-link>
+                <nav class="nav_bar grid-8">
                     <ul>
                         <li><nuxt-link to="/">Home</nuxt-link></li>
                         <li><nuxt-link to="/sobre">Sobre</nuxt-link></li>
@@ -17,35 +17,14 @@
 </template>
 
 <style scoped>
-    .menu {
+.menu {
 	width: 100%;
 	background-color: #4286f4;
 	padding: 20px 0;
 	color: #fff;
 }
 
-.menu_container {
-	max-width: 960px;
-	margin: 0 auto;
-}
 
-.menu_container::before, .menu_container::after {
-	content: '';
-	display: table;
-	clear: both;
-}
-
-.logo {
-	float: left;
-	font-size: 2.5em;
-	margin: 0 10px;
-	color: #fff;
-}
-
-.nav_bar {
-	float: right;
-	margin: 0 10px;
-}
 
 .nav_bar li {
 	display: inline-block;
